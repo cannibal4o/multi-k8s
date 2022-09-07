@@ -17,7 +17,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push georgilv/multi-client
-  - docker push georgilv/multi-nginx
-  - docker push georgilv/multi-server
-  - docker push georgilv/multi-worker
+  - docker push georglv/multi-client
+  - docker push georglv/multi-nginx
+  - docker push georglv/multi-server
+  - docker push georglv/multi-worker
