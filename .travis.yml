@@ -1,5 +1,6 @@
-language: generic
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -7,7 +8,7 @@ before_install:
   - docker build -t georglv/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true georglv/react-test npm test -- --coverage
+  - docker run -e CI=true georglv/react-test npm test
 
 after_success:
   - docker build -t georglv/multi-client ./client
@@ -21,3 +22,16 @@ after_success:
   - docker push georglv/multi-nginx
   - docker push georglv/multi-server
   - docker push georglv/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-central-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'multi-docker-bucket2'
+  bucket_path: 'docker-multi'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+
