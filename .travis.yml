@@ -29,7 +29,7 @@ deploy:
   app: 'multi-docker'
   env: 'MultiDocker-env'
   bucket_name: 'multi-docker-bucket2'
-  bucket_path: 'multi-docker-bucket2'
+  bucket_path: 'multi-docker'
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
