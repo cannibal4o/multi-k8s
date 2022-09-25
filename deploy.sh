@@ -9,5 +9,5 @@ docker push georglv/multi-server:$SHA
 docker push georglv/multi-worker:$SHA
 kubectl apply -f k8s
 kubectl set image deployment/server-deployment server=georglv/multi-server:$SHA
-kubectl set image deployment/client-deployment client=georglv/client-server:$SHA
+kubectl set image deployment/client-deployment client=georglv/multi-client:$SHA
 kubectl set image deployment/worker-deployment worker=georglv/multi-worker:$SHA
